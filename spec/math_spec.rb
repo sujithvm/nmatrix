@@ -252,7 +252,7 @@ describe "math" do
           expect(a).to eq(b)
           expect(r).to eq(b)
         rescue NotImplementedError
-          pending "potrf! not implemented without plugins"
+          skip "potrf! not implemented without plugins"
         end
       end
 
@@ -265,7 +265,7 @@ describe "math" do
           expect(a).to eq(b)
           expect(r).to eq(b)
         rescue NotImplementedError
-          pending "potrf! not implemented without plugins"
+          skip "potrf! not implemented without plugins"
         end
       end
 
@@ -279,7 +279,7 @@ describe "math" do
           expect(u).to eq(u_true)
           expect(l).to eq(l_true)
         rescue NotImplementedError
-          pending "potrf! not implemented without plugins"
+          skip "potrf! not implemented without plugins"
         end
       end
     end
@@ -315,7 +315,7 @@ describe "math" do
           expect(r).to be_within(err).of(r_solution)
         
         rescue NotImplementedError
-          pending "Suppressing a NotImplementedError when the lapacke plugin is not available"
+          skip "Suppressing a NotImplementedError when the lapacke plugin is not available"
         end
       end
 
@@ -347,7 +347,7 @@ describe "math" do
           expect(r).to be_within(err).of(r_solution)
         
         rescue NotImplementedError
-          pending "Suppressing a NotImplementedError when the lapacke plugin is not available"
+          skip "Suppressing a NotImplementedError when the lapacke plugin is not available"
         end
       end
 
@@ -373,7 +373,7 @@ describe "math" do
           expect(r).to be_within(err).of(r_solution)
         
         rescue NotImplementedError
-          pending "Suppressing a NotImplementedError when the lapacke plugin is not available"
+          skip "Suppressing a NotImplementedError when the lapacke plugin is not available"
         end
       end
       
@@ -397,7 +397,7 @@ describe "math" do
           expect(a_expected).to be_within(err).of(a)
                
         rescue NotImplementedError
-          pending "Suppressing a NotImplementedError when the lapacke plugin is not available"
+          skip "Suppressing a NotImplementedError when the lapacke plugin is not available"
         end
       end
 
@@ -425,7 +425,7 @@ describe "math" do
           expect(product[1,1]).to be_within(err).of(1)
 
         rescue NotImplementedError
-          pending "Suppressing a NotImplementedError when the lapacke plugin is not available"
+          skip "Suppressing a NotImplementedError when the lapacke plugin is not available"
         end
       end
     end

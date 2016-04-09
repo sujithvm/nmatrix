@@ -561,7 +561,7 @@ describe 'NMatrix' do
     [:dense, :yale, :list].each do |stype|
       context(stype) do
         it "should work in-place for complex dtypes" do
-          pending("not yet implemented for list stype") if stype == :list
+          skip("not yet implemented for list stype") if stype == :list
           n = NMatrix.new([2,3], [Complex(2,3)], stype: stype, dtype: :complex128)
           n.complex_conjugate!
           expect(n).to eq(NMatrix.new([2,3], [Complex(2,-3)], stype: stype, dtype: :complex128))
@@ -569,7 +569,7 @@ describe 'NMatrix' do
 
         [:object, :int64].each do |dtype|
           it "should work in-place for non-complex dtypes" do
-            pending("not yet implemented for list stype") if stype == :list
+            skip("not yet implemented for list stype") if stype == :list
             n = NMatrix.new([2,3], 1, stype: stype, dtype: dtype)
             n.complex_conjugate!
             expect(n).to eq(NMatrix.new([2,3], [1], stype: stype, dtype: dtype))
@@ -583,14 +583,14 @@ describe 'NMatrix' do
     [:dense, :yale, :list].each do |stype|
       context(stype) do
         it "should work out-of-place for complex dtypes" do
-          pending("not yet implemented for list stype") if stype == :list
+          skip("not yet implemented for list stype") if stype == :list
           n = NMatrix.new([2,3], [Complex(2,3)], stype: stype, dtype: :complex128)
           expect(n.complex_conjugate).to eq(NMatrix.new([2,3], [Complex(2,-3)], stype: stype, dtype: :complex128))
         end
 
         [:object, :int64].each do |dtype|
           it "should work out-of-place for non-complex dtypes" do
-            pending("not yet implemented for list stype") if stype == :list
+            skip("not yet implemented for list stype") if stype == :list
             n = NMatrix.new([2,3], 1, stype: stype, dtype: dtype)
             expect(n.complex_conjugate).to eq(NMatrix.new([2,3], [1], stype: stype, dtype: dtype))
           end

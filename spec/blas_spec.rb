@@ -92,7 +92,7 @@ describe NMatrix::BLAS do
         begin
           NMatrix::BLAS.cblas_trmm(:row, :left, :upper, false, :not_unit, 3, 3, 1, a, 3, b, 3)
         rescue NotImplementedError => e
-          pending e.to_s
+          skip e.to_s
         end
 
         product = NMatrix.new([3,3], [12,15,18, 18,21,24, -7,-8,-9], dtype: dtype)
@@ -126,13 +126,13 @@ describe NMatrix::BLAS do
     context dtype do
 
       it "exposes cblas rotg" do
-        pending("broken for :object") if dtype == :object
+        skip("broken for :object") if dtype == :object
 
         ab = NMatrix.new([2,1], [6,-8], dtype: dtype)
         begin
           c,s = NMatrix::BLAS::rotg(ab)
         rescue NotImplementedError => e
-          pending e.to_s
+          skip e.to_s
         end
 
         if [:float32, :float64].include?(dtype)
@@ -140,7 +140,7 @@ describe NMatrix::BLAS do
           expect(ab[1]).to be_within(1e-6).of(-5.0/3)
           expect(c).to be_within(1e-6).of(-3.0/5)
         else
-          pending "need correct test cases"
+          skip "need correct test cases"
           expect(ab[0]).to be_within(1e-6).of(10)
           expect(ab[1]).to be_within(1e-6).of(5.0/3)
           expect(c).to be_within(1e-6).of(3.0/5)
@@ -168,7 +168,7 @@ describe NMatrix::BLAS do
       end
 
       it "exposes asum" do
-        pending("broken for :object") if dtype == :object
+        skip("broken for :object") if dtype == :object
 
         x = NMatrix.new([4,1], [-1,2,3,4], dtype: dtype)
         expect(NMatrix::BLAS.asum(x)).to eq(10)
@@ -185,7 +185,7 @@ describe NMatrix::BLAS do
       end
 
       it "exposes nrm2" do
-        pending("broken for :object") if dtype == :object
+        skip("broken for :object") if dtype == :object
 
         if dtype =~ /complex/
           x = NMatrix.new([3,1], [Complex(1,2),Complex(3,4),Complex(0,6)], dtype: dtype)

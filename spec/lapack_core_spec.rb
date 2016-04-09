@@ -209,7 +209,7 @@ describe "NMatrix::LAPACK functions with internal implementations" do
         begin
           x = NMatrix::LAPACK::posv(:upper, a, b)
         rescue NotImplementedError => e
-          pending e.to_s
+          skip e.to_s
         end
 
         x_true = NMatrix.new([3,1], [1, 1, 0], dtype: dtype)
@@ -233,7 +233,7 @@ describe "NMatrix::LAPACK functions with internal implementations" do
         begin
           x = NMatrix::LAPACK::posv(:upper, a, b)
         rescue NotImplementedError => e
-          pending e.to_s
+          skip e.to_s
         end
 
         x_true = NMatrix.new([3,2], [1,0, 1,-1, 0,1], dtype: dtype)
@@ -258,7 +258,7 @@ describe "NMatrix::LAPACK functions with internal implementations" do
         begin
           u, s, vt = a.gesvd
         rescue NotImplementedError => e
-          pending e.to_s
+          skip e.to_s
         end
 
         s_true = NMatrix.new([mn_min,1], [4,3,Math.sqrt(5),0], dtype: a.abs_dtype)
@@ -291,7 +291,7 @@ describe "NMatrix::LAPACK functions with internal implementations" do
         begin
           u, s, vt = a.gesdd
         rescue NotImplementedError => e
-          pending e.to_s
+          skip e.to_s
         end
 
         s_true = NMatrix.new([mn_min,1], [4,3,Math.sqrt(5),0], dtype: a.abs_dtype)
@@ -318,7 +318,7 @@ describe "NMatrix::LAPACK functions with internal implementations" do
         begin
           eigenvalues, vl, vr = NMatrix::LAPACK.geev(a)
         rescue NotImplementedError => e
-          pending e.to_s
+          skip e.to_s
         end
 
         eigenvalues_true = NMatrix.new([n,1], [Complex(0,1), -Complex(0,1), -1], dtype: NMatrix.upcast(dtype, :complex64))
@@ -352,7 +352,7 @@ describe "NMatrix::LAPACK functions with internal implementations" do
         begin
           eigenvalues, vl, vr = NMatrix::LAPACK.geev(a)
         rescue NotImplementedError => e
-          pending e.to_s
+          skip e.to_s
         end
 
         eigenvalues_true = NMatrix.new([n,1], [1, 4, 2], dtype: dtype)
@@ -399,7 +399,7 @@ describe "NMatrix::LAPACK functions with internal implementations" do
         begin
           eigenvalues, vl = NMatrix::LAPACK.geev(a, :left)
         rescue NotImplementedError => e
-          pending e.to_s
+          skip e.to_s
         end
 
         eigenvalues_true = NMatrix.new([n,1], [Complex(0,1), -Complex(0,1), -1], dtype: NMatrix.upcast(dtype, :complex64))
@@ -425,7 +425,7 @@ describe "NMatrix::LAPACK functions with internal implementations" do
         begin
           eigenvalues, vr = NMatrix::LAPACK.geev(a, :right)
         rescue NotImplementedError => e
-          pending e.to_s
+          skip e.to_s
         end
 
         eigenvalues_true = NMatrix.new([n,1], [Complex(0,1), -Complex(0,1), -1], dtype: NMatrix.upcast(dtype, :complex64))
@@ -455,7 +455,7 @@ describe "NMatrix::LAPACK functions with internal implementations" do
         begin
           eigenvalues, vl, vr = NMatrix::LAPACK.geev(a)
         rescue NotImplementedError => e
-          pending e.to_s
+          skip e.to_s
         end
 
         eigenvalues_true = NMatrix.new([n,1], [1, 4, Complex(0,1)], dtype: dtype)
