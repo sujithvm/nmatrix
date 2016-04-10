@@ -6,6 +6,7 @@ branches:
 
 install:
   - SET PATH=C:\Ruby%ruby_version%\bin;%PATH%
+  - dir C:\Ruby%ruby_version%
   - "%devkit%\\devkitvars.bat"
   - gem install bundler --quiet --no-ri --no-rdoc
   - bundler env
