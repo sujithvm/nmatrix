@@ -11,6 +11,8 @@ install:
   - gem install bundler --quiet --no-ri --no-rdoc
   - bundler --version
   - bundle install
+
+  - set PATH=%PATH%;C:\MinGW\bin
 build_script:
   - bundle exec rake compile
 test_script:
