@@ -5,7 +5,11 @@ branches:
     - win_build
 
 install:
-  - SET PATH=C:\Ruby%ruby_version%\bin;%PATH%
+  - SET PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%
+  - if [%PLATFORM%] == [x64] set DEVKIT=C:\Ruby21-x64\DevKit
+  - if [%PLATFORM%] == [Win32] set DEVKIT=C:\Ruby21\DevKit
+  - "%DEVKIT%\\devkitvars.bat"
+
   - ruby --version
   - gem --version
   - gem install bundler --quiet --no-ri --no-rdoc
@@ -13,7 +17,7 @@ install:
   - bundle install
 
   - set PATH=%PATH%;C:\MinGW\bin
-  - copy c:\MinGW\bin\mingw32-make.exe c:\MinGW\bin\make.exe
+  #- copy c:\MinGW\bin\mingw32-make.exe c:\MinGW\bin\make.exe
 build_script:
   - bundle exec rake compile
 test_script:
@@ -21,5 +25,7 @@ test_script:
 
 environment:
   matrix:    
-    - ruby_version: "22"
-    - ruby_version: "22-x64"
+    - RUBY_VERSION: "22-x64"
+      PLATFORM: "x64"
+    - RUBY_VERSION: "22"
+      PLATFORM: "Win32"
