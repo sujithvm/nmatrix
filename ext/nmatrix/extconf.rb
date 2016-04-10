@@ -126,7 +126,9 @@ def find_newer_gplusplus #:nodoc:
 end
 
 def gplusplus_version
-  cxxvar = proc { |n| `#{CONFIG['CXX']} -E -dM - </dev/null | grep #{n}`.chomp.split(' ')[2] }
+  null_device = (system 'echo "Hi" </dev/null') ? '/dev/null' : 'nul'
+  cxxvar = proc { |n| `#{CONFIG['CXX']} -E -dM - <#{null_device} | grep #{n}`.chomp.split(' ')[2] }
+
   major = cxxvar.call('__GNUC__')
   minor = cxxvar.call('__GNUC_MINOR__')
   patch = cxxvar.call('__GNUC_PATCHLEVEL__')
