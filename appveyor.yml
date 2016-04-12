@@ -6,8 +6,6 @@ branches:
 
 install:
   - SET PATH=C:\Ruby%ruby_version%\bin;%PATH%
-  - dir C:\Ruby%ruby_version%
-  - "%devkit%\\devkitvars.bat"
   - gem install bundler --quiet --no-ri --no-rdoc
   - bundler env
   - bundle install
@@ -22,6 +20,4 @@ test_script:
 environment:
   matrix:    
     - ruby_version: "21"
-      devkit: C:\Ruby21\DevKit
     - ruby_version: "21-x64"
-      devkit: C:\Ruby21-x64\DevKit
